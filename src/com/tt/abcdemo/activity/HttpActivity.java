@@ -1,4 +1,4 @@
-package com.tt.abcdemo;
+package com.tt.abcdemo.activity;
 
 import java.io.File;
 
@@ -13,6 +13,7 @@ import com.ab.util.AbDialogUtil;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbImageUtil;
 import com.ab.util.AbToastUtil;
+import com.tt.abcdemo.R;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends AbActivity implements OnClickListener{
+public class HttpActivity extends AbActivity implements OnClickListener{
 
 	private Button getBtn, postBtn, byteBtn, fileDownBtn, fileUpBtn;
 	private AbHttpUtil mAbHttpUtil;
@@ -30,7 +31,7 @@ public class MainActivity extends AbActivity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setAbContentView(R.layout.activity_main);
+		setAbContentView(R.layout.activity_http);
 		initView();
 		initListener();
 		initHttp();		
@@ -83,28 +84,28 @@ public class MainActivity extends AbActivity implements OnClickListener{
 		mAbHttpUtil.get(url, new AbStringHttpResponseListener(){
 			@Override
 			public void onSuccess(int statusCode, String content) {
-				AbDialogUtil.showAlertDialog(MainActivity.this,"返回结果",content.trim(),new AbDialogOnClickListener(){
+				AbDialogUtil.showAlertDialog(HttpActivity.this,"返回结果",content.trim(),new AbDialogOnClickListener(){
 					@Override
 					public void onPositiveClick() {
-						AbToastUtil.showToast(MainActivity.this,"确认");
+						AbToastUtil.showToast(HttpActivity.this,"确认");
 					}
 					@Override
 					public void onNegativeClick() {
-						AbToastUtil.showToast(MainActivity.this,"取消");
+						AbToastUtil.showToast(HttpActivity.this,"取消");
 					}
             	});
 			}
 			@Override
 			public void onStart() {
-				AbDialogUtil.showProgressDialog(MainActivity.this,0,"正在查询...");
+				AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 			}
 			@Override
 			public void onFinish() {
-				AbDialogUtil.removeDialog(MainActivity.this);
+				AbDialogUtil.removeDialog(HttpActivity.this);
 			}
 			@Override
 			public void onFailure(int statusCode, String content, Throwable error) {
-				AbToastUtil.showToast(MainActivity.this,error.getMessage());
+				AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 			}
 		});
 	}
@@ -118,28 +119,28 @@ public class MainActivity extends AbActivity implements OnClickListener{
         mAbHttpUtil.post(url,params, new AbStringHttpResponseListener() {
 			@Override
 			public void onSuccess(int statusCode, String content) {
-				AbDialogUtil.showAlertDialog(MainActivity.this,"返回结果",content.trim(),new AbDialogOnClickListener(){
+				AbDialogUtil.showAlertDialog(HttpActivity.this,"返回结果",content.trim(),new AbDialogOnClickListener(){
 					@Override
 					public void onPositiveClick() {
-						AbToastUtil.showToast(MainActivity.this,"确认");
+						AbToastUtil.showToast(HttpActivity.this,"确认");
 					}
 					@Override
 					public void onNegativeClick() {
-						AbToastUtil.showToast(MainActivity.this,"取消");
+						AbToastUtil.showToast(HttpActivity.this,"取消");
 					}
             	});
 			}
 			@Override
 			public void onStart() {
-				AbDialogUtil.showProgressDialog(MainActivity.this,0,"正在查询...");
+				AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 			}
 			@Override
 			public void onFinish() {
-				AbDialogUtil.removeDialog(MainActivity.this);
+				AbDialogUtil.removeDialog(HttpActivity.this);
 			}
 			@Override
 			public void onFailure(int statusCode, String content, Throwable error) {
-				AbToastUtil.showToast(MainActivity.this,error.getMessage());
+				AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 			}
 		});
 	}
@@ -150,30 +151,30 @@ public class MainActivity extends AbActivity implements OnClickListener{
 			@Override
 			public void onSuccess(int statusCode, byte[] content) {
 				Bitmap bitmap = AbImageUtil.bytes2Bimap(content);
-            	ImageView view = new ImageView(MainActivity.this);
+            	ImageView view = new ImageView(HttpActivity.this);
             	view.setImageBitmap(bitmap);
 				AbDialogUtil.showAlertDialog("返回结果", view, new AbDialogOnClickListener(){
 					@Override
 					public void onPositiveClick() {
-						AbToastUtil.showToast(MainActivity.this,"确认");
+						AbToastUtil.showToast(HttpActivity.this,"确认");
 					}
 					@Override
 					public void onNegativeClick() {
-						AbToastUtil.showToast(MainActivity.this,"取消");
+						AbToastUtil.showToast(HttpActivity.this,"取消");
 					}
             	});
 			}
 			@Override
 			public void onStart() {
-				AbDialogUtil.showProgressDialog(MainActivity.this,0,"正在查询...");
+				AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 			}
 			@Override
 			public void onFinish() {
-				AbDialogUtil.removeDialog(MainActivity.this);
+				AbDialogUtil.removeDialog(HttpActivity.this);
 			}
 			@Override
 			public void onFailure(int statusCode, String content, Throwable error) {
-				AbToastUtil.showToast(MainActivity.this,error.getMessage());
+				AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 			}
 		});
 	}
@@ -184,30 +185,30 @@ public class MainActivity extends AbActivity implements OnClickListener{
 			@Override
 			public void onSuccess(int statusCode, File file) {
 				Bitmap bitmap = AbFileUtil.getBitmapFromSD(file);
-            	ImageView view = new ImageView(MainActivity.this);
+            	ImageView view = new ImageView(HttpActivity.this);
             	view.setImageBitmap(bitmap);
 				AbDialogUtil.showAlertDialog("返回结果", view, new AbDialogOnClickListener(){
 					@Override
 					public void onPositiveClick() {
-						AbToastUtil.showToast(MainActivity.this,"确认");
+						AbToastUtil.showToast(HttpActivity.this,"确认");
 					}
 					@Override
 					public void onNegativeClick() {
-						AbToastUtil.showToast(MainActivity.this,"取消");
+						AbToastUtil.showToast(HttpActivity.this,"取消");
 					}
             	});
 			}
 			@Override
 			public void onStart() {
-				AbDialogUtil.showProgressDialog(MainActivity.this,0,"正在查询...");
+				AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 			}
 			@Override
 			public void onFinish() {
-				AbDialogUtil.removeDialog(MainActivity.this);
+				AbDialogUtil.removeDialog(HttpActivity.this);
 			}
 			@Override
 			public void onFailure(int statusCode, String content, Throwable error) {
-				AbToastUtil.showToast(MainActivity.this,error.getMessage());
+				AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 			}
 		});
 	}
