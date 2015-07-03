@@ -45,6 +45,11 @@
             android:name=".activity.HttpActivity"
             android:configChanges="keyboardHidden|orientation" >
         </activity>
+        
+        <activity
+            android:name=".activity.ListViewActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
             
     </application>
 

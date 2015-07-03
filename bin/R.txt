@@ -32,8 +32,9 @@ int id mListView 0x7f090005
 int id postBtn 0x7f090001
 int id progressBar 0x7f090007
 int layout activity_http 0x7f030000
-int layout activity_main 0x7f030001
-int layout item_list 0x7f030002
+int layout activity_listview 0x7f030001
+int layout activity_main 0x7f030002
+int layout item_list 0x7f030003
 int menu main 0x7f080000
 int string action_settings 0x7f040002
 int string app_name 0x7f040000
